@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+				<!-- Load jQuery -->
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript">
+			google.load("jquery", "1");
+		</script>
+		<script type="text/javascript" src="tinymce/jscripts/tiny_mce/jquery.tinymce.js"></script>
+
+		<script type="text/javascript">
+			$().ready(function() {
+		$('textarea.tinymce').tinymce({
+			// Location of TinyMCE script
+			script_url : 'tinymce/jscripts/tiny_mce/tiny_mce.js',
+
+			// General options
+			theme : "advanced",
+			plugins : "autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,advlist",
+
+			// Theme options
+			theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull",
+			theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,image,|,insertdate,inserttime",
+			//theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+			//theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak",
+			theme_advanced_toolbar_location : "top",
+			theme_advanced_toolbar_align : "left",
+			theme_advanced_statusbar_location : "bottom",
+			theme_advanced_resizing : true,
+
+			// Example content CSS (should be your site CSS)
+			content_css : "css/content.css",
+
+			// Drop lists for link/image/media/template dialogs
+			template_external_list_url : "lists/template_list.js",
+			external_link_list_url : "lists/link_list.js",
+			external_image_list_url : "lists/image_list.js",
+			media_external_list_url : "lists/media_list.js",
+
+			// Replace values for the template plugin
+			template_replace_values : {
+				username : "Some User",
+				staffid : "991234"
+			}
+		});
+	});
+		</script>
+		<link rel="stylesheet" type="text/css" href="folha.css">
+	</head>
+	<body>
+		<div class="folha">
+			<form method="post" action="gerar.php">
+				Men. 00/<input type="text" name="setor" placeholder="setor" size="5"> </br> 
+				<p align="right">Em <input type="text" name="dia" placeholder="dia" size="1"> de <input type="text" name="mes" placeholder="mes" size="3"> de <input type="text" name="ano" placeholder="ano" size="2">  </p>
+				
+				<input type="text" name="nome_detinatario" placeholder="para" size="20"> <br />
+				
+				<input type="text" name="assunto" placeholder="assunto" size="20"> <br /><br />
+				
+				<center><textarea name="texto" class="tinymce" style="width:800px;"></textarea></center>
+				
+				<select name="final">
+				  <option value="Atenciosamente,">Atenciosamente, [para mesmo nivel hierarquico ou inferior]</option>
+				  <option value="Respeitosamente,">Respeitosamente, [para nivel hierarquico superior ao do remetente]</option>
+				</select> <br />
+				
+				<center>
+					<input type="text" name="nome_remetente" placeholder="nome_remetente" size="20"> <br />
+					<input type="text" name="cargo_remetente" placeholder="cargo_remetente" size="20"> <br />
+				</center>
+				<input type="submit" name="gerar" value="Gerar pdf" />
+			</form>
+		</div>
+	</html>
+
