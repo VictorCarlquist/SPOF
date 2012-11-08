@@ -1,6 +1,7 @@
 <?php
 	// shell_exec('date'); /
-	
+	//Victor Carlquist
+	//07/11/12
 	include 'htmlToLatex.php';
 	
 	$setor = $_POST['setor'];
@@ -18,23 +19,22 @@
 	$texto = str_replace_assoc($replace,$texto);
 
 	$s = <<<EOT
-\\documentclass[12pt,a4paper]{article}
+\\documentclass[12pt,a4paper]{report}
 \\usepackage[brazil]{babel} % Habilita o uso do idioma português do brasil (PT-BR).
-\\usepackage[T1]{fontenc} 
-%\\usepackage{fontspec} % Habilita maior variedade de acentos. Pode ser necessario adicionar outros pacotes.
+\\usepackage[T1]{fontenc}
+\\usepackage[latin1]{inputenc}
 \\usepackage{lmodern} % Habilita o uso da font Latin Modern.
+
 \\begin{document}
 	Mem. 00/$setor \\\\
-	 $dia de $mes de $ano.
-	
-	$nome_des\\
-	$assunto\\
-	$texto\\
-	
+	\\begin{flushright} $dia de $mes de $ano.\\end{flushright}
+	$nome_des\\\\ \\\\
+	$assunto\\\\ \\\\
+	$texto\\\\ \\\\
 	\\begin{center}
-		$final\\
-		$nome_remetente\\
-		$cargo_remetente\\
+		$final\\\\
+		$nome_rem\\\\
+		$cargo_rem\\\\
 	\\end{center}
 \\end{document}
 EOT;
@@ -42,12 +42,13 @@ EOT;
 	$fh = fopen($nome_arq, 'w') or die("can't open file");
 	fwrite($fh, $s);
 	fclose($fh);
-	shell_exec("xelatex memorando.tex");
+	system("xelatex memorando.tex");
 	chmod ("memorando.log", 0777); 
 	chmod ("memorando.pdf", 0777); 
 	chmod ("memorando.aux", 0777); 
-	echo shell_exec("xelatex memorando.tex");
+	chmod ("missfont.log", 0777); 
+	echo system("xelatex memorando.tex");
 	chmod ("memorando.pdf", 0777); 
-	echo $s;
+	//echo $s;
 	echo "<a href='memorando.pdf'>Download</a>";
 ?>

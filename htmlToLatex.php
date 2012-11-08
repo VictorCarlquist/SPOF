@@ -1,5 +1,6 @@
 <?php
-	
+	//Victor Carlquist
+	//07/11/12
 	$replace = array(
 		'<ol>' => '\\begin{enumerate} ',
 		'</ol>' => '\\end{enumerate} ',
@@ -7,8 +8,15 @@
 		'</ul>' => '\\end{itemize} ',
 		'<li>' => '\\item ',
 		'</li>' => '',
-		'</p>'=>' \\ \\ ',
+		'</p>'=>'',
 		'<p>'=>'',
+		'<i>'=>'\textit{',
+		'</i>'=>'}',
+		'<strong>'=>'\textbf{',
+		'</strong>'=>'}',
+		'<span style="text-decoration: underline;">'=>'\underline{',
+		'</span>'=>'}',
+		'&'=>''
 	);
 
 	echo str_replace_assoc($replace,$string);
