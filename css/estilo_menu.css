@@ -1,0 +1,12 @@
+#menu ul{
+	text-decoration:none;
+	list-style-type: none;
+}
+#menu a{
+	padding:8px;
+	background-color:#FFF;
+}
+#menu a:hover{
+	padding:8px;
+	background-color:#FF0;
+}
