@@ -1,0 +1,19 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[brazil]{babel} % Habilita o uso do idioma português do brasil (PT-BR).
+\usepackage[T1]{fontenc} 
+
+\begin{document}
+	Mem. 00/SSP \\
+	\begin{flushright} 12 de janeiro de 2012.\end{flushright}
+	\\
+	Teste\\
+	texto aqui texto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aqui\
+texto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aqui\
+texto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aquitexto aqui\\
+	
+	\begin{center}
+		Atenciosamente,\
+		\
+		\
+	\end{center}
+\end{document}
